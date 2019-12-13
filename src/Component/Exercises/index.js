@@ -3,15 +3,23 @@ import { Grid, Paper, Typography, List } from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 
-const styles = {
+const styles = theme => ({
   Paper: {
     padding: 20,
     marginTop: 10,
     marginBottom: 10,
     height: 500,
     ovelflowY: "auto"
+  },
+  container: {
+    [theme.breakpoints.up("sm")]: {
+      height: "calc(100% -64px -48px)"
+    },
+    [theme.breakpoints.down("xs")]: {
+      height: "calc(100% -56px -48px)"
+    }
   }
-};
+});
 //xs={12} wielkość pane
 export default ({
   exercises,
@@ -29,7 +37,11 @@ export default ({
         {exercises.map(([group, exercises]) =>
           !category || category === group ? (
             <Fragment>
-              <Typography variant="h6" style={{ textTransform: "capitalize" }}>
+              <Typography
+                color="secondary"
+                variant="h6"
+                style={{ textTransform: "capitalize" }}
+              >
                 {group}
               </Typography>
 
